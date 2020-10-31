@@ -1,14 +1,14 @@
 import React from "react";
 
-const Todo = ({ todo, todos, setTodos }) => {
+const Todo = ({ filteredTodo, todos, setTodos }) => {
   const todoDeleteHandler = () => {
-    setTodos(todos.filter((e) => e.id !== todo.id));
+    setTodos(todos.filter((e) => e.id !== filteredTodo.id));
   };
 
   const todoCompleteHandler = () => {
     setTodos(
       todos.map((e) => {
-        if (e.id === todo.id) {
+        if (e.id === filteredTodo.id) {
           e.completed = !e.completed;
         }
         return e;
@@ -18,8 +18,10 @@ const Todo = ({ todo, todos, setTodos }) => {
 
   return (
     <div className="todo">
-      <li className={todo.completed === false ? "todo-item" : "completed"}>
-        {todo.text}
+      <li
+        className={filteredTodo.completed === false ? "todo-item" : "completed"}
+      >
+        {filteredTodo.text}
       </li>
       <button onClick={todoCompleteHandler} className="complete-btn">
         <i className="fas fa-check"></i>
