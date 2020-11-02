@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "./TodoContext";
 
-const Form = ({ inputText, setInputText, todos, setTodos, setStatus }) => {
+const Form = () => {
+  const { inputTextValue, todosValue, statusValue } = useContext(TodoContext);
+  const [inputText, setInputText] = inputTextValue;
+  const [todos, setTodos] = todosValue;
+  const [status, setStatus] = statusValue;
+
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
   };
