@@ -8,7 +8,7 @@ import { TodoProvider } from "./components/TodoContext";
 function App() {
   return (
     <TodoProvider>
-      <div className="App">
+      <div>
         <header>
           <h1>Fujun's Todo List</h1>
         </header>

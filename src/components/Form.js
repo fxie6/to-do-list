@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { TodoContext } from "./TodoContext";
 
 const Form = () => {
-  const { inputTextValue, todosValue, statusValue } = useContext(TodoContext);
-  const [inputText, setInputText] = inputTextValue;
-  const [todos, setTodos] = todosValue;
-  const [status, setStatus] = statusValue;
+  const { inputTextState, todosState, statusState } = useContext(TodoContext);
+  const [inputText, setInputText] = inputTextState;
+  const [todos, setTodos] = todosState;
+  const [status, setStatus] = statusState;
 
   const inputTextHandler = (e) => {
     setInputText(e.target.value);
@@ -26,13 +26,8 @@ const Form = () => {
 
   return (
     <form>
-      <input
-        value={inputText}
-        onChange={inputTextHandler}
-        type="text"
-        className="todo-input"
-      />
-      <button onClick={submitTodoHandler} className="todo-button" type="submit">
+      <input value={inputText} onChange={inputTextHandler} type="text" />
+      <button onClick={submitTodoHandler} type="submit">
         <i className="fas fa-plus-square"></i>
       </button>
       <div className="select">

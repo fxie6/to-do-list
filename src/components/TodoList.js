@@ -4,9 +4,9 @@ import Todo from "./Todo";
 import { TodoContext } from "./TodoContext";
 
 const TodoList = () => {
-  const { todosValue, filteredTodosValue } = useContext(TodoContext);
-  const [todos, setTodos] = todosValue;
-  const [filteredTodos, setFilteredTodos] = filteredTodosValue;
+  const { todosState, filteredTodosState } = useContext(TodoContext);
+  const [todos, setTodos] = todosState;
+  const [filteredTodos, setFilteredTodos] = filteredTodosState;
 
   return (
     <div className="todo-container">
