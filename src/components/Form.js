@@ -13,11 +13,26 @@ const Form = () => {
 
   const submitTodoHandler = (e) => {
     e.preventDefault();
-    setTodos([
-      ...todos,
-      { text: inputText, completed: false, id: Math.random() },
-    ]);
+    const newTodo = { text: inputText, completed: false, _id: Math.random() };
+    setTodos([...todos, newTodo]);
+    postTodo(newTodo);
     setInputText("");
+  };
+
+  const postTodo = async (input) => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        text: input.text,
+        completed: input.completed,
+        _id: input._id,
+      }),
+    };
+    const response = await fetch(
+      "http://localhost:3001/api/todos",
+      requestOptions
+    );
   };
 
   const statusHandler = (e) => {

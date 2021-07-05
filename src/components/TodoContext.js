@@ -21,29 +21,38 @@ export const TodoProvider = (props) => {
     }
   };
 
-  //Save to local
-  const saveLocalTodos = () => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+  // // Save to local
+  // const saveLocalTodos = () => {
+  //   localStorage.setItem("todos", JSON.stringify(todos));
+  // };
+
+  // // Get local todos
+  // const getLocalTodos = () => {
+  //   if (localStorage.getItem("todos") === null) {
+  //     localStorage.setItem("todos", JSON.stringify([]));
+  //   } else {
+  //     let localTodos = JSON.parse(localStorage.getItem("todos"));
+  //     setTodos(localTodos);
+  //   }
+  // };
+
+  // Get todos from mongo
+  const getDbTodos = async () => {
+    const response = await fetch("http://localhost:3001/api/todos");
+    const dbTodos = await response.json();
+    setTodos(dbTodos);
   };
 
-  //Get local todos
-  const getLocalTodos = () => {
-    if (localStorage.getItem("todos") === null) {
-      localStorage.setItem("todos", JSON.stringify([]));
-    } else {
-      let localTodos = JSON.parse(localStorage.getItem("todos"));
-      setTodos(localTodos);
-    }
-  };
-
-  //Run once when app starts
+  // Run once when app starts
+  // Call api to get todos if exist
   useEffect(() => {
-    getLocalTodos();
+    // getLocalTodos();
+    getDbTodos();
   }, []);
 
   useEffect(() => {
     selectHandler();
-    saveLocalTodos();
+    // saveLocalTodos();
   }, [status, todos]);
 
   return (

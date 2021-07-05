@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-//Import components
+// Import components
 import Todo from "./Todo";
 import { TodoContext } from "./TodoContext";
 
@@ -13,7 +13,7 @@ const TodoList = () => {
       <ul className="todo-list">
         {filteredTodos.map((filteredTodo) => (
           <Todo
-            key={filteredTodo.id}
+            key={filteredTodo._id}
             filteredTodo={filteredTodo}
             todos={todos}
             setTodos={setTodos}

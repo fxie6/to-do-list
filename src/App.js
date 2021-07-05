@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-//Import components
+// Import components
 import Form from "./components/Form";
 import Todolist from "./components/TodoList";
 import { TodoProvider } from "./components/TodoContext";
